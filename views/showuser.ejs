@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All user</title>
+</head>
+<body>
+    <style>
+        table,
+        th,
+        tr,
+        td {
+            border: 2px solid black;
+        }
+    </style>
+     <form method="GET" action="/user/new">
+        <button style="background-color: green;">Add New User</button>
+      </form>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+        </tr>
+       <% for(user of users){ %>
+            <tr>
+                <td><%= user.id %> </td>
+                <td><%= user.username %></td>
+                <td> <%= user.email %></td>
+                <td>
+                    <form method="get" action="/user/<%=user.id %>/edit">
+                        <button style="background-color: yellow;">Edit Username</button>
+                    </form>
+                    <form method="get" action="/user/<%=user.id %>/delete">
+                        <button style="background-color: red;">Delete</button>
+                    </form>
+                </td>
+               
+            </tr>
+        <%}%>
+
+        <!-- <tr>
+            <td>13</td>
+            <td>zubair</td>
+            <td>zub@gmail.com</td>
+        </tr> -->
+    </table>
+
+</body>
+</html>
